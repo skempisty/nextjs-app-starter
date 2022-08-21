@@ -28,8 +28,8 @@ const NavBar: FC = () => {
       <VisibilityBox visible={!isOnHome}>
         <Link href={"/"}>
           <Button>
-          <Icon name="chevron left" />
-          Back to Search
+            <Icon name="chevron left" />
+            Back to Search
           </Button>
         </Link>
       </VisibilityBox>

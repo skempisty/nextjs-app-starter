@@ -4,6 +4,11 @@ import { Button } from 'semantic-ui-react'
 import Box from "./styled-system/Box";
 import Flex from "./styled-system/Flex";
 import ArtistPrimaryInfo from "./ArtistPrimaryInfo";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import {
+  addArtist, removeArtistById,
+  selectMyArtistList
+} from "../../store/slices/appSlice";
 
 
 interface IProps {
@@ -12,6 +17,11 @@ interface IProps {
 }
 
 const ArtistItem: FC<IProps> = ({ artist, isCompact = true }) => {
+  const dispatch = useAppDispatch()
+  const artistList = useAppSelector(selectMyArtistList)
+
+  const isArtistAdded = artistList.some(a => a.id === artist.id)
+
   const primaryGenre = artist.genres.find(g => g.is_primary)
   const additionalGenres = primaryGenre ? artist.genres.filter(g => g.id !== primaryGenre.id) : artist.genres
 
@@ -51,10 +61,19 @@ const ArtistItem: FC<IProps> = ({ artist, isCompact = true }) => {
           </Flex>
         }
 
-        <Button
-          primary
-          content="Add"
-        />
+        {isArtistAdded ?
+          <Button
+            negative
+            content="Remove"
+            onClick={() => dispatch(removeArtistById(artist.id))}
+          />
+          :
+          <Button
+            positive
+            content="Add"
+            onClick={() => dispatch(addArtist(artist))}
+          />
+        }
       </Flex>
     </Flex>
   )
