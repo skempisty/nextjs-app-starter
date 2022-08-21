@@ -16,7 +16,7 @@ const ArtistDetail: FC<IProps> = ({ artist, relatedArtists }) => {
       <ArtistItem artist={artist} isCompact={false}/>
 
       <Title>Related Artists</Title>
-      <ArtistList artists={relatedArtists}/>
+      <ArtistList artists={relatedArtists.filter(a => a.id !== artist.id)}/>
     </>
   )
 }
