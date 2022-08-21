@@ -1,9 +1,15 @@
 import '../styles/globals.css'
 import 'semantic-ui-css/semantic.min.css'
+import Box from "../components/shared/Box";
+
 import type { AppProps } from 'next/app'
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+  return (
+    <Box padding="4em 8em">
+      <Component {...pageProps} />
+    </Box>
+  )
 }
 
 export default MyApp
