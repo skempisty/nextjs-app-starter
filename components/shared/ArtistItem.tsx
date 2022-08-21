@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { ArtistData } from "../../types";
 import { Button } from 'semantic-ui-react'
+import Box from "./styled-system/Box";
 import Flex from "./styled-system/Flex";
 import ArtistPrimaryInfo from "./ArtistPrimaryInfo";
 
@@ -11,6 +12,11 @@ interface IProps {
 }
 
 const ArtistItem: FC<IProps> = ({ artist, isCompact = true }) => {
+  const primaryGenre = artist.genres.find(g => g.is_primary)
+  const additionalGenres = primaryGenre ? artist.genres.filter(g => g.id !== primaryGenre.id) : artist.genres
+
+  const additionalGenresText = additionalGenres.map(g => g.name).join(", ")
+
   return (
     <Flex
       key={artist.id}
@@ -22,18 +28,26 @@ const ArtistItem: FC<IProps> = ({ artist, isCompact = true }) => {
       flexDirection={isCompact ? "row" : "column"}
     >
       {isCompact ?
-        <ArtistPrimaryInfo artist={artist} isCompact={isCompact}/>
+        <ArtistPrimaryInfo
+          artist={artist}
+          primaryGenre={primaryGenre?.name || "None"}
+          isCompact={isCompact}
+        />
         :
         <Flex marginBottom="1em">
-          <ArtistPrimaryInfo artist={artist} isCompact={isCompact}/>
+          <ArtistPrimaryInfo
+            artist={artist}
+            primaryGenre={primaryGenre?.name || "None"}
+            isCompact={isCompact}
+          />
         </Flex>
       }
 
       <Flex justifyContent="space-between" width={isCompact ? undefined : "100%"}>
         {!isCompact &&
           <Flex flexDirection="column">
-            <div>Additional Genres</div>
-            <div>Heavy Metal, Hard Rock, Classic Rock</div>
+            <b>Additional Genres:</b>
+            <Box>{additionalGenresText || "None"}</Box>
           </Flex>
         }
 

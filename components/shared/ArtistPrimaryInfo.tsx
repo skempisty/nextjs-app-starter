@@ -10,12 +10,11 @@ import {ArtistData} from "../../types";
 
 interface IProps {
   artist: ArtistData;
+  primaryGenre: string;
   isCompact?: boolean;
 }
 
-const ArtistPrimaryInfo: FC<IProps> = ({ artist, isCompact = true }) => {
-  const primaryGenre = artist.genres.find(g => g.is_primary)
-
+const ArtistPrimaryInfo: FC<IProps> = ({ artist, primaryGenre, isCompact = true }) => {
   return (
     <>
       <Box marginRight={isCompact ? undefined : "2em"}>
@@ -34,17 +33,27 @@ const ArtistPrimaryInfo: FC<IProps> = ({ artist, isCompact = true }) => {
 
         <Text>
           {!isCompact &&
-            <Text marginRight="0.5em">Primary Genre:</Text>
+            <Text
+              marginRight="0.5em"
+              fontWeight="bold"
+            >
+              Primary Genre:
+            </Text>
           }
 
-          {primaryGenre?.name || ""}
+          {primaryGenre}
         </Text>
 
         {!isCompact &&
-          <Text>
-            <Text marginRight="0.5em">Popularity Score:</Text>
+          <Text marginTop="0.5em">
+            <Text
+              marginRight="0.5em"
+              fontWeight="bold"
+            >
+              Popularity Score:
+            </Text>
 
-            90
+            {artist.popularity}
           </Text>
         }
       </Flex>
