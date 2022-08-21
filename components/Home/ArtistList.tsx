@@ -3,6 +3,8 @@ import { ArtistData } from "../../types";
 import { Image, Button } from 'semantic-ui-react'
 import Box from "../shared/Box";
 import Flex from "../shared/Flex";
+import Text from "../shared/Text";
+import Title from "../shared/Title";
 
 
 interface IProps {
@@ -26,14 +28,18 @@ const ArtistList: FC<IProps> = ({ artists }) => {
           >
             <Image src={artist.image} alt={artist.name} size="tiny"/>
 
-            <Box>
-              <h3>
+            <Flex flexDirection="column" alignItems="center">
+              <Title
+                as="h3"
+                textAlign="center"
+              >
                 {artist.name}
-              </h3>
-              <div>
+              </Title>
+
+              <Text>
                 {primaryGenre?.name || ""}
-              </div>
-            </Box>
+              </Text>
+            </Flex>
 
             <Button
               primary

@@ -2,6 +2,7 @@ import { GenreData } from "../../types";
 import { Dropdown } from 'semantic-ui-react'
 import { FC, useEffect, useState } from "react";
 import ArtistList from "./ArtistList";
+import Box from "../shared/Box";
 
 
 interface IProps {
@@ -37,13 +38,15 @@ const Home: FC<IProps> = ({ genres }) => {
 
   return (
     <>
-      <Dropdown
-        placeholder='Enter a genre to find artists'
-        fluid
-        search
-        selection
-        options={genreOptions}
-      />
+      <Box marginBottom="1em">
+        <Dropdown
+          placeholder='Enter a genre to find artists'
+          fluid
+          search
+          selection
+          options={genreOptions}
+        />
+      </Box>
 
       <ArtistList artists={genreArtists} />
     </>
