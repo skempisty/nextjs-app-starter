@@ -4,11 +4,11 @@ import { ArtistData } from "../../types";
 import remove from "lodash/remove";
 
 
-interface MyArtistListState {
+interface AppState {
   myArtistList: Array<ArtistData>
 }
 
-const initialState: MyArtistListState = {
+const initialState: AppState = {
   myArtistList: []
 }
 

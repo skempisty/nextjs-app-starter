@@ -30,7 +30,7 @@ const ArtistItem: FC<IProps> = ({ artist, isCompact = true }) => {
   return (
     <Flex
       key={artist.id}
-      maxWidth="30em"
+      width="30em"
       justifyContent="space-between"
       alignItems={isCompact ? "center" : "flex-start"}
       padding="1em"
