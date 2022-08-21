@@ -2,10 +2,10 @@ import { FC } from "react";
 import { ArtistData } from "../../types";
 import { Image, Button } from 'semantic-ui-react'
 import Link from "next/link";
-import Box from "../shared/Box";
-import Flex from "../shared/Flex";
-import Text from "../shared/Text";
-import Title from "../shared/Title";
+import Box from "./styled-system/Box";
+import Flex from "./styled-system/Flex";
+import Text from "./styled-system/Text";
+import Title from "./styled-system/Title";
 
 
 interface IProps {

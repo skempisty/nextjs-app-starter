@@ -1,6 +1,6 @@
 import '../styles/globals.css'
 import 'semantic-ui-css/semantic.min.css'
-import Box from "../components/shared/Box";
+import Box from "../components/shared/styled-system/Box";
 
 import type { AppProps } from 'next/app'
 

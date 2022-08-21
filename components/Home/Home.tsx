@@ -1,8 +1,8 @@
 import { GenreData } from "../../types";
 import { Dropdown } from 'semantic-ui-react'
 import { FC, useEffect, useState } from "react";
-import ArtistList from "./ArtistList";
-import Box from "../shared/Box";
+import ArtistList from "../shared/ArtistList";
+import Box from "../shared/styled-system/Box";
 
 
 interface IProps {
