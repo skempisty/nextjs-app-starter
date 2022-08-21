@@ -6,7 +6,7 @@ interface IProps {
   genres: Array<GenreData>;
 }
 
-const Home: NextPage<IProps> = ({ genres }) => {
+const HomePage: NextPage<IProps> = ({ genres }) => {
   return <HomeComponent genres={genres} />
 }
 
@@ -22,4 +22,4 @@ export async function getServerSideProps() {
   return { props: { genres } }
 }
 
-export default Home
+export default HomePage

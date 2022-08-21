@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { ArtistData } from "../../types";
 import { Image, Button } from 'semantic-ui-react'
+import Link from "next/link";
 import Box from "../shared/Box";
 import Flex from "../shared/Flex";
 import Text from "../shared/Text";
@@ -33,7 +34,9 @@ const ArtistList: FC<IProps> = ({ artists }) => {
                 as="h3"
                 textAlign="center"
               >
-                {artist.name}
+                <Link href={`/artist-detail/${artist.id}`}>
+                  {artist.name}
+                </Link>
               </Title>
 
               <Text>
