@@ -12,7 +12,9 @@ const ArtistList: FC<IProps> = ({ artists }) => {
   return (
     <Box>
       {artists.map(artist =>
-        <ArtistItem key={artist.id} artist={artist} />
+        <Box key={artist.id} marginBottom="1em">
+          <ArtistItem artist={artist} />
+        </Box>
       )}
     </Box>
   )
