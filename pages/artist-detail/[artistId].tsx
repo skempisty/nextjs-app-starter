@@ -1,6 +1,8 @@
 import ArtistDetailComponent from "../../components/ArtistDetail";
 import { ArtistData } from "../../types";
 import { NextPage } from "next";
+import getArtistById from "../../api/server/getArtistById";
+import getArtistsRelatedById from "../../api/server/getArtistsRelatedById";
 
 
 interface IProps {
@@ -15,13 +17,8 @@ const ArtistDetailPage: NextPage<IProps> = ({ artist, relatedArtists }) => {
 export async function getServerSideProps(context: { params: any; }) {
   const { params } = context
 
-  const getArtistUrl = `https://music.musicaudience.info/api/v1/music/artists/${params.artistId}?apikey=${process.env.MAX_API_KEY}`
-  const artistRes = await fetch(getArtistUrl)
-  const { data: [ artist ] } = await artistRes.json()
-
-  const getSimilarArtistsUrl = `https://music.musicaudience.info/api/v1/music/artists/${params.artistId}/similar?apikey=${process.env.MAX_API_KEY}`
-  const res = await fetch(getSimilarArtistsUrl)
-  const { data: relatedArtists } = await res.json()
+  const artist = await getArtistById(params.artistId)
+  const relatedArtists = await getArtistsRelatedById(params.artistId)
 
   return {
     props: {

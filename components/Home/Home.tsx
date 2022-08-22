@@ -3,6 +3,7 @@ import { Dropdown } from 'semantic-ui-react'
 import { FC, useEffect, useState } from "react";
 import ArtistList from "../shared/ArtistList";
 import Box from "../shared/styled-system/Box";
+import getArtistsByGenreId from "../../api/client/getArtistsByGenreId";
 
 
 interface IProps {
@@ -16,12 +17,7 @@ const Home: FC<IProps> = ({ genres }) => {
   useEffect(() => {
     async function fetchData() {
       if (selectedGenreId) {
-        console.log('selectedGenreId', selectedGenreId)
-
-        // get list of artists matching that genre
-        const res = await fetch(`/api/genres/${selectedGenreId}/artists`)
-        const { data: artists } = await res.json()
-        console.log('artists', artists)
+        const artists = await getArtistsByGenreId(selectedGenreId)
 
         setGenreArtists(artists)
       }
