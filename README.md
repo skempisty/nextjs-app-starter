@@ -30,3 +30,16 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+## Testing
+
+For demonstration purposes I configured Jest and wrote a test for one component.
+Ideally in a production app we should have close to 100% test coverage with some
+effective tests.
+
+**Test**
+```bash
+# Run test suite
+yarn test
+# Run test suite w/ watch
+yarn test:watch
+```
