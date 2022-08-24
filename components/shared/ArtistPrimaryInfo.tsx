@@ -1,10 +1,10 @@
-import {FC} from "react";
+import { FC } from "react";
 import Box from "./styled-system/Box";
-import {Image} from "semantic-ui-react";
 import Flex from "./styled-system/Flex";
 import Title from "./styled-system/Title";
-import Link from "next/link";
 import Text from "./styled-system/Text";
+import Image from "next/image";
+import Link from "next/link";
 import {ArtistData} from "../../types";
 
 
@@ -17,8 +17,19 @@ interface IProps {
 const ArtistPrimaryInfo: FC<IProps> = ({ artist, primaryGenre, isCompact = true }) => {
   return (
     <>
-      <Box marginRight={isCompact ? undefined : "2em"}>
-        <Image src={artist.image} alt={artist.name} size="tiny"/>
+      <Box
+          position="relative"
+          width="6em"
+          height="6em"
+          marginRight={isCompact ? undefined : "2em"}
+      >
+        <Image
+            src={artist.image}
+            alt={artist.name}
+            layout="fill"
+            objectFit="cover"
+            objectPosition="top"
+        />
       </Box>
 
       <Flex flexDirection="column" alignItems={isCompact ? "center" : "flex-start"}>
